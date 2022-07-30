@@ -5,6 +5,21 @@ date: "22/12/2018"
 output: html_document
 ---
 
+```{r}
+
+libs <- c("shiny")
+sapply(libs, require, character.only = TRUE)
+
+```
+```{r}
+getwd()
+history()
+dir()
+loadhistory(file ="01-graficos-johnny.Rmd")
+```
+
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -53,7 +68,7 @@ plot(n, fib, pch = 21, col = "red", bg = "yellow", cex = 1.2,
      main = "Fibonacci",
      type = "o", lty = "dashed", lwd = 2, 
      xlim = c(1,10), ylim = c(1, 100),
-     xaxp = c(1,10,3), yaxp = c(0,100, 10))
+     xaxp = c(1,10,3), yaxp = c(0,100, 5))
 ```
 
 ## Cómo añadir elementos a un gráfico
@@ -104,5 +119,18 @@ legend("bottomright",
        col = c("red", "blue", "orangered"), 
        lty = c("dotted", "dashed", "dashed")
        )
+```
+
+
+#Para crear una secuencia de datos 
+
+
+```{r}
+
+vector2 <- c(1:40)
+
+typeof(vector1)
+  typeof(vector2)
+
 ```
 

@@ -1,0 +1,175 @@
+---
+title: "Graficos"
+output: html_document
+date: "2022-07-30"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+```{r message=FALSE, warning=FALSE}
+
+libs <- c("tidyverse", "readr", "rgdal", "rgeos","leaflet","leaflet.extras","RColorBrewer","readxl")
+sapply(libs, require, character.only = TRUE)
+
+```
+
+
+## Graficos con la función `Plot`
+
+Aqui vamos a intentar aprender una nueva forma de mostrar data
+
+
+
+
+
+```{r}
+
+library("tidyverse")
+
+alumnos <- c(1:10)
+notas <- c(1:10 )
+
+plot(alumnos,notas)
+
+```
+
+
+Ejemplo2 
+
+
+```{r}
+
+plot(2^(1:6))
+
+
+```
+
+
+Si queremos representar una función $f(x)$
+
+```{r}
+
+f <- function(x){ sqrt(x)}
+
+
+plot(f)
+
+
+```
+
+
+## Parámetros
+
+
+```{r echo=FALSE, fig.align='center' }
+
+n = 1:20
+fibonachi = (1/sqrt(5))*((1+sqrt(5))/2)^n - (1/sqrt(5))*((1-sqrt(5))/2)^n
+
+par(mfrow = c(2,2))  
+
+plot(fibonachi, xlab = "n", ylab = expression(F[n]),
+main = "Sucesión de Fibonachi", pch = 21, cex = 2, 
+col = "powderblue", bg = "orchid", log= "xy", type="b")
+
+plot(fibonachi, xlab = "n", ylab = expression(F[n]),
+main = "Sucesión de Fibonachi", pch = 21, cex = 2, 
+col = "powderblue", bg = "orchid", log= "y", type= "s")
+
+plot(fibonachi, xlab = "n", ylab = expression(F[n]),
+main = "Sucesión de Fibonachi", pch = 21, cex = 2, 
+col = "powderblue", bg = "orchid", type = "h")
+
+plot(fibonachi, xlab = "n", ylab = expression(F[n]),
+main = "Sucesión de Fibonachi", pch = 21, cex = 2, 
+col = "red", bg = "orchid", type = "l")
+
+
+```
+
+
+##Practicando
+
+```{r}
+
+felevada <-  function(x) {
+    return( sqrt(x))
+}
+
+
+
+felevada(9)
+
+```
+
+#Matrices bidimensionales
+
+```{r}
+
+m <- matrix(data=c(1,2,3,4,5,6,7,8,9,10,11,12),nrow=3,ncol=4)
+m
+
+
+w <- 1:10
+
+l <- list(1:5)
+
+w
+l[1]
+
+parcel <- list(destination="New York", dimensions=c(2,6,9), price=12.95)
+
+parcel
+
+parcel[2]
+
+eye.colors <-  factor(c("brown","blue","blue","green","brown"))
+
+eye.colors
+
+levels(eye.colors)
+```
+
+#Comprensión de un conjunto de datos
+
+
+```{r}
+##aqui tenemos los datos de iris
+datos <- iris
+#listo los datos
+datos
+head(datos, n=20) #solo listo los primeros 20
+
+dim(datos) #muestra las dimensiones existentes en R
+names(datos)#Esto nombra o muestra detalle de todos los datos que se encuentran
+
+str(datos) #resumen de los datos
+
+summary(datos) # otro resumen de los datos
+
+sd(datos$Sepal.Length)
+var(datos$Sepal.Length)
+sqrt(var(datos$Sepal.Length))
+
+
+datos.table <- table(datos$Species) #creo un objeto de tipo tabla que contiene una tabla de frecuencias de la variable "species" 
+
+par(mfrow = c(1,3))  
+
+hist(datos$Sepal.Width)
+pie(datos.table)
+barplot(datos.table, col=("darkslateblue"))
+
+```
+
+## Creamos la covarianza con las 4 variables numéricas del conjunto de datos
+
+```{r}
+
+cov(datos[,1:4])
+
+```
+
