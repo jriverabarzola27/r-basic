@@ -11,6 +11,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
+
+## Versión Johnny Luis Rivera Barzola
+
 # Conociendo R
 
 
